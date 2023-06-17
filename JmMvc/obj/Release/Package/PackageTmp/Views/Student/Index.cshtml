@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<h4 class="lang" key="students">Students. Translating doesn't work on the hosting. Please use localhost.</h4>
+
+<div class="row">
+    <a href="#/Student/Add" class="lang" key="add_addStudent">Add Student</a>
+</div>
+
+<div class="row">
+    <div id="StudentDiv">
+    </div>
+</div>
+
+<script>
+    $(function () {
+        GetStudents();
+    });
+
+    function GetStudents() {
+        $.get("/Student/_Index/", function (data) {
+            $("#StudentDiv").html(data);
+        });
+    }
+
+    function DeleteStudent(studentID) {
+        if (confirm("Delete student?")) {
+            $.get("/Student/Delete/", { studentID: studentID }, function (data) {
+                GetStudents();
+            });
+        }
+    }
+</script>
+
+<script src="~/lang-script.js"></script>

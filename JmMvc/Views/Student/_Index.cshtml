@@ -1,0 +1,33 @@
+﻿@model IEnumerable<JmMvc.Entities.Student>
+@{
+    Layout = null;
+}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th class="lang" key="id">ID</th>
+            <th class="lang" key="name">Name</th>
+            <th class="lang" key="mail">Email</th>
+            <th class="lang" key="class">Class</th>
+            <th class="lang" key="action">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StudentID</td>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@item.Email</td>
+                <td>@item.Class</td>
+                <td>
+                    <a href="#/Student/Edit?id=@item.StudentID" class="lang" key="edit">Edit</a>
+                    <a href="javascript::;" onclick="DeleteStudent('@item.StudentID')" class="lang" key="delete">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/lang-script.js"></script>
